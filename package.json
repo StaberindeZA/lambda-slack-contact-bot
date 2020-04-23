@@ -1,0 +1,11 @@
+{
+  "name": "slack-contact-bot",
+  "version": "1.0.0",
+  "description": "A slack bot for posting contact information to a channel",
+  "main": "index.js",
+  "author": "Reino Muhl",
+  "license": "MIT",
+  "dependencies": {
+    "@slack/bolt": "^2.0.1"
+  }
+}
