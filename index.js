@@ -1,7 +1,8 @@
 const { App } = require("@slack/bolt");
 
-const token = process.env.SLACK_BOT_TOKEN;
-const signingSecret = process.env.SLACK_SIGNING_SECRET;
+const token = process.env.SLACK_BOT_TOKEN || 'INSERT_TOKEN';
+const signingSecret = process.env.SLACK_SIGNING_SECRET || 'INSERT_SIGNING_SECRET';
+const channel = process.env.SLACK_CHANNEL || '#SLACK_CHANNEL';
 
 const createApp = async () => {
   try {
@@ -16,9 +17,6 @@ const createApp = async () => {
 }
 
 exports.handler = async (event) => {
-  
-  const channel = 'personal-site-contact';
-  
   const theBody = JSON.parse(event.body);
   
   const text = theBody.text == undefined ? "Default" : theBody.text;
@@ -31,20 +29,20 @@ exports.handler = async (event) => {
       token: token,
       text: text,
     });
-    // TODO implement
+    
     const response = {
         statusCode: 200,
         headers: {
           "Access-Control-Allow-Origin": "*",
         },
-        body: JSON.stringify('Hello from Lambda! + Result: ' + result.ok),
+        body: JSON.stringify('Slack message sent! + Result: ' + result.ok),
     };
 
-    console.log(response);
     return response;
   } catch (e) {
     console.log(e);
-    throw("Message didn't get sent");
+    throw("Error. Message didn't get sent to Slack!");
   }
     
 };
+

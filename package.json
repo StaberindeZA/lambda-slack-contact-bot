@@ -1,7 +1,7 @@
 {
-  "name": "slack-contact-bot",
+  "name": "lambda-slack-contact-bot",
   "version": "1.0.0",
-  "description": "A slack bot for posting contact information to a channel",
+  "description": "A lambda function to call slack bot for posting contact information to a channel",
   "main": "index.js",
   "author": "Reino Muhl",
   "license": "MIT",
